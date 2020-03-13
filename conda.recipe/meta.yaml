@@ -1,0 +1,35 @@
+{% set version = "0.1.0" %}
+
+package:
+  name: "jsonobj"
+  version: {{ version }}
+
+source:
+  path: ../
+  # git-url: https://github.com/goiosunsw/jsonobj.git
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  host:
+    - json
+    - pip
+    - python
+  run:
+    - json
+    - python
+
+about:
+  home: "https://github.com/goiosunsw/jsonobj.git"
+  license: "GNU Lesser General Public v3 or later (LGPLv3+)"
+  license_family: "LGPL"
+  license_file: ""
+  summary: "JSONOBJ - JSON manipulation in python"
+  doc_url: ""
+  dev_url: ""
+
+extra:
+  recipe-maintainers:
+    - goiosunsw
