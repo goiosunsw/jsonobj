@@ -1,6 +1,13 @@
 import json as jpy
 
-class JSONObject(object):
+def read_json(filename):
+    """
+    reads a JSON file and returns a JSONobj
+    """
+    with open(filename) as f:
+        return JSONobj(f)
+
+class JSONobj(object):
     def __init__(self, json=None):
         self.max_repr_chars=160
         self._json={}
@@ -13,7 +20,7 @@ class JSONObject(object):
             try:
                 self._json = jpy.loads(json)
                 return
-            except TypeError:#jpy.JSONDecodeError:
+            except TypeError:
                 self._json = json
 
     def _normalise_key(self,key):
@@ -52,6 +59,9 @@ class JSONObject(object):
             return el
 
     def __setitem__(self,key,value):
+        if value is JSONobj:
+            value = value.to_python()
+
         key = self._normalise_key(key)
         el = self._json
         k2 = key[-1]
