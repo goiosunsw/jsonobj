@@ -84,6 +84,38 @@ js['users/2'] = js['users/0']
 js['users/3'] = {'name': 'Mary Smith', 'email': 'mary@smith.com'}
 ```
 
+## Iteration
+
+Iterate through all leaf nodes of JSON:
+
+
+```python
+for k, v in js.iter_tree():
+    print(k,v)
+```
+Prints:
+```
+'users/0/name': 'John Smith'
+'users/0/email': 'john.smith@email.com'
+'users/1/email': 'Brian Smith'
+...
+```
+
+Alternatively, one can iterate over all nodes at a particular level with:
+
+```python
+for k,v in js.items():
+    print(k,v)
+```
+
+Or apply a function to all values in tree with:
+
+```python
+js.vistitems(len)
+```
+
+returns the length of all strings in js tree
+
 ## Object copy
 
 obtain a copy of `js` with:
@@ -105,5 +137,5 @@ As in a python dictionary, nodes can be popped:
 
 
 ```python
-user0 = js.pop['users/0']
+user0 = js.pop('users/0')
 ```
