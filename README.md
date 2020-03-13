@@ -42,3 +42,28 @@ js['users/0/name']
 
 returns ```"John Smith"```
 
+The same result is obtained with
+
+
+```python
+js['users'][0]['name']
+```
+
+## Transform into the normal json python output
+
+```python
+js.to_python()
+```
+
+returns
+
+```python
+{'users':
+    [
+        {'name': 'John Smith',
+         'email': 'john.smith@email.com'},
+        {'name': 'Brian Smith',
+         'email': 'brian.smith@email.com'},
+    ]
+}
+```
