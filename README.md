@@ -27,3 +27,18 @@ with filename as f:
     js = JSONobj(f)
 ```
 
+## Access elements
+
+```python
+js['users']
+```
+
+returns a JSONobj if
+
+
+```python
+js['users/0/name']
+```
+
+returns ```"John Smith"```
+
