@@ -113,6 +113,11 @@ class JSONobj(object):
             self._json = jpy.load(f)    
 
     def iter_tree(self):
+        """
+        Iterates through all leaf nodes of object
+        
+        returns key, value pairs
+        """
         self._cur_path = []
         yield from self._iter_tree()
 
@@ -180,6 +185,11 @@ class JSONobj(object):
         del parent[key[-1]]
 
     def pop(self, key):
+        """
+        Return a JSON node and delete it
+        
+        If in a list, then indices are readjusted
+        """
         key = self._normalise_key(key)
         parent = self._get_raw_json_parent(key)
         ret = parent[key[-1]]
